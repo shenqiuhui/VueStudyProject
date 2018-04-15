@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>computed option</title>
+    <script type="text/javascript" src="../assets/js/vue.js"></script>
+</head>
+<body>
+    <h1>computed option</h1>
+    <hr>
+    <div id="app">
+        <p>{{newPrice}}</p>
+        <ul>
+            <li v-for="item in reverseNews">{{item.title}} => {{item.time}}</li>
+        </ul>
+    </div>
+    <script>
+        var newList = [
+            {
+                title: '微视频 | 习声回响——重温那些年习主席说过的话',
+                time: '2018-04-07'
+            },
+            {
+                title: '习主席出席博鳌亚洲论坛”漫评①',
+                time: '2018-04-08'
+            },
+            {
+                title: '全球目光聚焦博鳌！中国将再次发出声音',
+                time: '2018-04-09'
+            },
+            {
+                title: '2018博鳌亚洲论坛年会  亚洲和世界进入博鳌时间',
+                time: '2018-04-10'
+            },
+        ];
+        var app = new Vue({
+            el: '#app',
+            data: {
+                price: 100,
+                newsList: newList
+            },
+            computed: {
+                newPrice: function () {
+                    return this.price = '￥' + this.price;
+                },
+                reverseNews: function () {
+                    return this.newsList.reverse();
+                }
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Vue.set全局操作</title>
+    <script type="text/javascript" src="../assets/js/vue.js"></script>
+</head>
+<body>
+    <h1>Vue.set全局操作</h1>
+    <hr>
+    <div id="app">
+        <p>{{count}}</p>
+        <ul>
+            <li v-for="item in arr">{{item}}</li>
+        </ul>
+        <br>
+        <button onclick="change()">Add</button>
+    </div>
+    <script type="text/javascript">
+        function change() {
+            // 方式1：
+            // Vue.set(outData, 'count', 1);
+            // 方式2：
+            // app.count++;
+            // 方式3：
+            // outData.count++;
+            // 改变数组（操作数组的索引和length监测不到，需用Vue.set解决）
+            // app.arr[2] = 'cccccc';
+            Vue.set(app.arr, 2, 'cccccc');
+        }
+        var outData = {
+            count: 0,
+            arr: ['aa', 'bb', 'cc', 'dd']
+        }
+
+        var app = new Vue({
+            el: '#app',
+            data: outData
+        });
+    </script>
+</body>
+</html>

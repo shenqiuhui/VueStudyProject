@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Vue中使用jQuery和在构造器外部调用内部的方法</title>
+    <script type="text/javascript" src="../assets/js/vue.js"></script>
+    <script type="text/javascript" src="../assets/js/jquery-3.3.1.js"></script>
+</head>
+<body>
+    <h1>Vue中使用jQuery和在构造器外部调用内部的方法</h1>
+    <hr>
+    <div id="app">
+        {{count}}
+    </div>
+    <script type="text/javascript">
+        var app = new Vue({
+            el: '#app',
+            data: {
+                count: 1
+            },
+            methods: {
+                add: function () {
+                    console.log('执行了构造器内部的方法');
+                }
+            },
+            mounted: function () {
+                $('#app').html('hello world!');
+            }
+        });
+
+        app.add();
+    </script>
+</body>
+</html>

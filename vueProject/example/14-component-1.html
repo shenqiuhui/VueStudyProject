@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Component组件-1</title>
+    <script type="text/javascript" src="../assets/js/vue.js"></script>
+</head>
+<body>
+    <h1>Component组件-1</h1>
+    <hr>
+    <div id="app">
+        <panda-shen></panda-shen>
+        <hello-world></hello-world>
+    </div>
+    <div id="box">
+        <panda-shen></panda-shen>
+    </div>
+    <script type="text/javascript">
+        Vue.component('pandaShen', {
+            template: '<h2 style="color: red;">我是全局组件pandaShen</h2>'
+        });
+        var app = new Vue({
+            el: '#app',
+            components: {
+                "helloWorld": {
+                    template: '<h2 style="color: red;">我是局部组件helloWorld</h2>'
+                }
+            }
+        });
+
+        var vm = new Vue({
+            el: '#box'
+        });
+    </script>
+</body>
+</html>

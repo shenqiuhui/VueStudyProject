@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>component组件-3</title>
+    <script type="text/javascript" src="../assets/js/vue.js"></script>
+</head>
+<body>
+    <h1>component组件-3</h1>
+    <hr>
+    <div id="app">
+        <panda :country="country"></panda>
+    </div>
+    <script type="text/javascript">
+        var cityCom = {
+            template: '<p style="color: red;">SiChuan of China</p>',
+            props: ['country']
+        };
+
+        var pandaCom = {
+            template: `
+                <div>
+                    <p>panda in {{country}}</p>
+                    <city></city>
+                </div>
+            `,
+            props: ['country'],
+            components: {
+                'city': cityCom
+            }
+        }
+
+        var app = new Vue({
+            el: '#app',
+            data: {
+                country: 'China'
+            },
+            components: {
+                'panda': pandaCom
+            }
+        });
+    </script>
+</body>
+</html>

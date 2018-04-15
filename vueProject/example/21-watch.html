@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>watch option</title>
+    <script type="text/javascript" src="../assets/js/vue.js"></script>
+</head>
+<body>
+    <h1>watch option</h1>
+    <hr>
+    <div id="app">
+        <p>当前温度：{{temperature}}℃</p>
+        <p>穿衣建议：{{clothes}}</p>
+        <p>
+            <button @click="up(step)">增加温度</button>
+            <button @click="down(step)">降低温度</button>
+        </p>
+    </div>
+    <script type="text/javascript">
+        var clothesArr = ['T恤短袖', '夹克长裙', '棉衣羽绒服'];
+        var app = new Vue({
+            el: '#app',
+            data: {
+                temperature: 16,
+                clothes: '夹克长裙',
+                step: 2
+            },
+            methods: {
+                up: function (step) {
+                    this.temperature += step;
+                },
+                down: function (step) {
+                    this.temperature -= step;
+                }
+            },
+            // watch: {
+            //     temperature: function (newVal, oldVal) {
+            //         if (newVal >= 26) {
+            //             this.clothes = clothesArr[0];
+            //         } else if (newVal < 26 && newVal >= 0) {
+            //             this.clothes = clothesArr[1];
+            //         } else {
+            //             this.clothes = clothesArr[2];
+            //         }
+            //     }
+            // }
+        });
+
+        app.$watch('temperature', function (newVal, oldVal) {
+            if (newVal >= 26) {
+                this.clothes = clothesArr[0];
+            } else if (newVal < 26 && newVal >= 0) {
+                this.clothes = clothesArr[1];
+            } else {
+                this.clothes = clothesArr[2];
+            }
+        });
+    </script>
+</body>
+</html>

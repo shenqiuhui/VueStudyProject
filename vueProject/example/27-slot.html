@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>内置组件-slot</title>
+    <script type="text/javascript" src="../assets/js/vue.js"></script>
+</head>
+<body>
+    <h1>内置组件-slot</h1>
+    <hr>
+    <div id="app">
+        <panda>
+            <span slot="url">{{slotData.url}}</span>
+            <span slot="name">{{slotData.name}}</span>
+            <span slot="age">{{slotData.age}}</span>
+        </panda>
+    </div>
+    <template id="tpl">
+        <div>
+            <p>地址：<slot name="url"></slot></p>
+            <p>姓名：<slot name="name"></slot></p>
+            <p>年龄：<slot name="age"></slot></p>
+        </div>
+    </template>
+    <script type="text/javascript">
+        var slotCom = {
+            template: '#tpl'
+        };
+
+        var app = new Vue({
+            el: '#app',
+            data: {
+                slotData: {
+                    url: 'www.baidu.com',
+                    name: 'panda',
+                    age: 18
+                }
+            },
+            components: {
+                "panda": slotCom
+            }
+        });
+    </script>
+</body>
+</html>

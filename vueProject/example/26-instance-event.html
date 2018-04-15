@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>$on()&$emit()&$once()&$off()实例事件</title>
+    <script type="text/javascript" src="../assets/js/vue.js"></script>
+</head>
+<body>
+    <h1>$on()&$emit()&$once()&$off()实例事件</h1>
+    <hr>
+    <div id="app">
+        <p>{{num}}</p>
+        <p><button @click="add">Add事件</button></p>
+    </div>
+    <p><button onclick="jianfa()">on事件</button></p>
+    <p><button onclick="jianfaOnce()">once事件</button></p>
+    <p><button onclick="eventOff()">off事件</button></p>
+    <script type="text/javascript">
+        var app = new Vue({
+            el: '#app',
+            data: {
+                num: 1
+            },
+            methods: {
+                add: function () {
+                    this.num++;
+                }
+            }
+        });
+
+        app.$on('jian', function (msg) {
+            console.log(msg);
+            this.num--;
+        });
+
+        app.$once('jianOnce', function (msg) {
+            console.log(msg);
+            this.num--;
+        });
+
+        function jianfa() {
+            app.$emit('jian', 1);
+        }
+
+        function jianfaOnce() {
+            app.$emit('jianOnce', 2);
+        }
+
+        function eventOff() {
+            app.$off('jian');
+        }
+
+    </script>
+</body>
+</html>

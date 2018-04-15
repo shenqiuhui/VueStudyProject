@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Component组件-2</title>
+    <script type="text/javascript" src="../assets/js/vue.js"></script>
+</head>
+<body>
+    <h1>Component组件-2</h1>
+    <hr>
+    <div id="app">
+        <panda-shen :from-here="land"></panda-shen>
+    </div>
+    <script type="text/javascript">
+        var app = new Vue({
+            el: '#app',
+            data: {
+                land: 'China'
+            },
+            components: {
+                'pandaShen': {
+                    template: '<h2>panda is from {{fromHere}}</h2>',
+                    props: ['fromHere']
+                }
+            }
+        });
+    </script>
+</body>
+</html>

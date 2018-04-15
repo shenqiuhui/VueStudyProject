@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>v-model指令</title>
+    <script type="text/javascript" src="../assets/js/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <h1>v-model指令</h1>
+        <hr>
+        <p>原始文本信息：{{msg}}</p>
+        <h3>文本框</h3>
+        <P>v-model：<input type="text" v-model="msg"></P>
+        <P>v-model.lazy：<input type="text" v-model.lazy="msg"></P>
+        <P>v-model.number：<input type="text" v-model.number="msg"></P>
+        <P>v-model.trim：<input type="text" v-model.trim="msg"></P>
+        <h3>文本域</h3>
+        <p><textarea name="" id="" cols="30" rows="10" v-model="msg"></textarea></p>
+        <h3>多选框绑定一个值</h3>
+        <input type="checkbox" name="isCheck" id="isCheck" v-model="isTrue">
+        <label for="isCheck">{{isTrue}}</label>
+        <h3>多选框绑定数组</h3>
+        <input type="checkbox" name="shen" id="shen" value="shen" v-model="checkArr">
+        <label for="shen">shen</label>
+        <input type="checkbox" name="qiu" id="qiu" value="qiu" v-model="checkArr">
+        <label for="qiu">qiu</label>
+        <input type="checkbox" name="hui" id="hui" value="hui" v-model="checkArr">
+        <label for="hui">hui</label>
+        <input type="checkbox" name="panda" id="panda" value="panda" v-model="checkArr">
+        <label for="panda">panda</label>
+        <p>{{checkArr}}</p>
+        <h3>单选框绑定</h3>
+        <input type="radio" name="man" id="man" value="男" v-model="sex">
+        <label for="man">男</label>
+        <input type="radio" name="woman" id="woman" value="女" v-model="sex">
+        <label for="woman">女</label>
+        <p>当前选中的性别为：{{sex}}</p>
+    </div>
+    <script type="text/javascript">
+        var app = new Vue({
+            el: '#app',
+            data: {
+                msg: 'hello world!',
+                isTrue: true,
+                checkArr: [],
+                sex: '男'
+            }
+        });
+    </script>
+</body>
+</html>

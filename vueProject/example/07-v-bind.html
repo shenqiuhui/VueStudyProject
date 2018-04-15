@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>v-bind指令</title>
+    <script type="text/javascript" src="../assets/js/vue.js"></script>
+    <style>
+        .classA {
+            color: red;
+        }
+        .classB {
+            font-size: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <h1>v-bind指令</h1>
+        <p>
+            <img v-bind:src="imgSrc" alt="" width="200px">
+        </p>
+        <p>
+            <a :href="linkSrc">点击跳转</a>
+        </p>
+        <hr>
+        <div :class="className">绑定class</div>
+        <div :class="{classA: isClassA, classB: isClassB}">绑定class中的判断</div>
+        <div :class="[classA, classB]">绑定class中的数组</div>
+        <div :class="isTrue ? classA : classB">绑定class中的三元运算符</div>
+        <p>
+            <input type="checkbox" name="isCheck" id="isCheck" v-model="isTrue">
+            <label for="isCheck">isTrue = {{isTrue}}</label>
+        </p>
+        <hr>
+        <div :style="{color: color, fontSize: font}">绑定style</div>
+        <div :style="styleObj">对象绑定style</div>
+    </div>
+    <script type="text/javascript">
+        var app = new Vue({
+            el: '#app',
+            data: {
+                imgSrc: 'http://jspang.com/wp-content/uploads/2018/01/VUE-timeline.jpg',
+                linkSrc: 'http://www.baidu.com',
+                className: 'classA',
+                isClassA: true,
+                isClassB: false,
+                classA: 'classA',
+                classB: 'classB',
+                isTrue: true,
+                color: 'red',
+                font: '20px',
+                styleObj: {
+                    color: 'red',
+                    fontSize: '20px'
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>

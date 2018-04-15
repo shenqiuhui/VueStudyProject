@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>$mount()&destroy()&$forceUpdate()&$nextTick()实例方法</title>
+    <script type="text/javascript" src="../assets/js/vue.js"></script>
+</head>
+<body>
+    <h1>$mount()&destroy()&$forceUpdate()&$nextTick()实例方法</h1>
+    <hr>
+    <div id="app">
+    </div>
+    <p><button onclick="destroy()">卸载</button></p>
+    <p><button onclick="reload()">刷新</button></p>
+    <p><button onclick="tick()">更改数据</button></p>
+    <script type="text/javascript">
+        var app = Vue.extend({
+            template: '<p>{{message}}</p>',
+            data: function () {
+                return {
+                    message: 'hello world!'
+                }
+            },
+            updated: function () {
+                console.log('数据被更新了');
+            },
+            destroyed: function () {
+                console.log('实例被卸载了');
+            }
+        });
+
+        var vm = new app().$mount('#app');
+
+        function destroy() {
+            vm.$destroy();
+        }
+
+        function reload() {
+            vm.$forceUpdate();
+        }
+
+        function tick() {
+            vm.message = 'hi panda!';
+            vm.$nextTick(function () {
+                console.log('更改了数据的值');
+            });
+        }
+    </script>
+</body>
+</html>
