@@ -29,7 +29,7 @@ export default {
         return new Promise((resolve, reject) => {
             if(state.tableData.length != 0) {
                 // Ajax 于服务器交互时使用
-                // axios.post('url', { data: state.tableData }).then(res => {
+                // axios.post('url', { data: state.tableData, money: state.totalMoney }).then(res => {
                 //     commit('TABLE_DATA_CLEAR');
                 //     resolve(res);
                 // }).chatch(err => {
